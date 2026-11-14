@@ -492,3 +492,160 @@ input {
     transition: none !important;
   }
 }
+
+/* Transactions */
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.toolbar select,
+.toolbar__search,
+.add-form input,
+.add-form select,
+.table__category {
+  height: 36px;
+  padding: 0 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-small);
+  background: var(--surface-raised);
+}
+
+.toolbar__search {
+  flex: 1 1 200px;
+  max-width: 280px;
+}
+
+.toolbar__check {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--ink-2);
+}
+
+.toolbar__spacer {
+  flex: 1;
+}
+
+.button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.add-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-small);
+  background: var(--page);
+}
+
+.add-form label {
+  display: grid;
+  gap: 4px;
+  color: var(--ink-2);
+  font-size: 0.82rem;
+}
+
+.add-form__grow {
+  flex: 1 1 200px;
+}
+
+.add-form__error {
+  flex-basis: 100%;
+  color: var(--bad);
+  font-size: 0.87rem;
+}
+
+.transactions__summary {
+  margin: 16px 0 8px;
+  color: var(--ink-2);
+  font-size: 0.87rem;
+}
+
+.table-scroll {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+.table th,
+.table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--grid);
+  text-align: left;
+}
+
+.table th {
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.table th button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.table th button:hover {
+  color: var(--ink);
+}
+
+.table tbody tr:hover {
+  background: var(--hover);
+}
+
+.table .is-numeric {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.table .is-income {
+  color: var(--good);
+}
+
+.table__date {
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+
+.table__category {
+  height: 30px;
+  border-color: transparent;
+  background: transparent;
+}
+
+.table__category:hover {
+  border-color: var(--border);
+}
+
+.table__actions {
+  width: 1%;
+}
+
+.icon-button--quiet {
+  width: 28px;
+  height: 28px;
+  border-color: transparent;
+  background: transparent;
+  color: var(--muted);
+}
+
+.show-more {
+  display: block;
+  margin: 16px auto 0;
+}
