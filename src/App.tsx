@@ -95,9 +95,14 @@ function Shell() {
   );
 }
 
-export function App({ initial }: { initial?: AppData }) {
+interface AppProps {
+  initial?: AppData;
+  persist?: boolean;
+}
+
+export function App({ initial, persist }: AppProps) {
   return (
-    <StoreProvider initial={initial}>
+    <StoreProvider initial={initial} persist={persist}>
       <Shell />
     </StoreProvider>
   );
