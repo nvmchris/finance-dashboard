@@ -12,10 +12,20 @@ interface Store {
 
 const StoreContext = createContext<Store | null>(null);
 
-export function StoreProvider({ initial, children }: { initial?: AppData; children: ReactNode }) {
+interface StoreProviderProps {
+  /** Starting data; defaults to whatever is saved in this browser. */
+  initial?: AppData;
+  /** Set to `false` for throwaway sessions such as the demo mode. */
+  persist?: boolean;
+  children: ReactNode;
+}
+
+export function StoreProvider({ initial, persist = true, children }: StoreProviderProps) {
   const [data, dispatch] = useReducer(reducer, initial, (seed) => seed ?? loadData());
 
-  useEffect(() => saveData(data), [data]);
+  useEffect(() => {
+    if (persist) saveData(data);
+  }, [data, persist]);
 
   return <StoreContext value={{ data, dispatch }}>{children}</StoreContext>;
 }

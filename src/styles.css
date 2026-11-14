@@ -419,17 +419,25 @@ input {
 
 .category-bars {
   display: grid;
-  grid-template-columns: max-content minmax(40px, 1fr) max-content max-content;
-  gap: 10px 12px;
-  align-items: center;
+  gap: 10px;
   margin: 0;
   padding: 0;
   list-style: none;
   font-size: 0.9rem;
 }
 
+/* Fixed columns per row keep every bar on the same scale and baseline. */
 .category-bars li {
-  display: contents;
+  display: grid;
+  grid-template-columns: 7.5em minmax(40px, 1fr) 6.5em 2.5em;
+  gap: 12px;
+  align-items: center;
+}
+
+.category-bars__name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .category-bars__track {

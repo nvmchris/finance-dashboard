@@ -53,3 +53,9 @@ test('toggles and remembers the theme', async () => {
   expect(document.documentElement.dataset.theme).toBe('dark');
   expect(screen.getByRole('button', { name: 'Switch to light theme' })).toBeInTheDocument();
 });
+
+test('does not save anything when persistence is off', async () => {
+  render(<App initial={createSampleData(TODAY)} persist={false} />);
+  await userEvent.click(screen.getByRole('button', { name: 'Switch to dark theme' }));
+  expect(localStorage.length).toBe(0);
+});

@@ -118,27 +118,29 @@ export function CashFlowChart({ points, currency }: CashFlowChartProps) {
           <TooltipRow label="Net" value={formatMoney(activePoint.net, currency)} />
         </Tooltip>
       )}
-      <table className="sr-only">
-        <caption>Income and expenses per month</caption>
-        <thead>
-          <tr>
-            <th>Month</th>
-            <th>Income</th>
-            <th>Expenses</th>
-            <th>Net</th>
-          </tr>
-        </thead>
-        <tbody>
-          {points.map((point) => (
-            <tr key={point.month}>
-              <th>{formatMonth(point.month)}</th>
-              <td>{formatMoney(point.income, currency)}</td>
-              <td>{formatMoney(point.expenses, currency)}</td>
-              <td>{formatMoney(point.net, currency)}</td>
+      <div className="sr-only">
+        <table>
+          <caption>Income and expenses per month</caption>
+          <thead>
+            <tr>
+              <th>Month</th>
+              <th>Income</th>
+              <th>Expenses</th>
+              <th>Net</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {points.map((point) => (
+              <tr key={point.month}>
+                <th>{formatMonth(point.month)}</th>
+                <td>{formatMoney(point.income, currency)}</td>
+                <td>{formatMoney(point.expenses, currency)}</td>
+                <td>{formatMoney(point.net, currency)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
