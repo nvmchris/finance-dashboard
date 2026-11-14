@@ -16,3 +16,4 @@ and the project follows [Semantic Versioning](https://semver.org/).
 - App shell with month picker, CSV import button, light and dark theme and an empty state with demo data.
 - Dashboard: summary tiles with month-over-month change, cash-flow bars, ranked spending by category and a balance line, all dependency-free with hover tooltips.
 - Transactions view with search, category and type filters, sortable columns, inline category editing, manual entry, delete and CSV export.
+- Budgets: monthly limit per category with progress meters, on-track, close and over-budget states, and a summary card on the dashboard.
