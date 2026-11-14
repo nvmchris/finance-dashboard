@@ -5,6 +5,7 @@ import { Header } from './components/Header';
 import type { ViewTab } from './components/Header';
 import { ImportButton } from './components/ImportButton';
 import { MonthPicker } from './components/MonthPicker';
+import { Transactions } from './components/Transactions';
 import { useNotice } from './hooks/useNotice';
 import { useTheme } from './hooks/useTheme';
 import { importCsv } from './lib/csv';
@@ -13,9 +14,12 @@ import { listMonths } from './lib/stats';
 import type { AppData, MonthKey } from './lib/types';
 import { StoreProvider, useStore } from './state/store';
 
-type View = 'dashboard';
+type View = 'dashboard' | 'transactions';
 
-const VIEWS: ViewTab<View>[] = [{ id: 'dashboard', label: 'Dashboard' }];
+const VIEWS: ViewTab<View>[] = [
+  { id: 'dashboard', label: 'Dashboard' },
+  { id: 'transactions', label: 'Transactions' },
+];
 
 function plural(count: number, noun: string): string {
   return `${count} ${noun}${count === 1 ? '' : 's'}`;
@@ -65,9 +69,12 @@ function Shell() {
         {month && <ImportButton onFile={onFile} />}
       </Header>
       <main>
-        {month ? (
+        {!month ? null : view === 'dashboard' ? (
           <Dashboard month={month} />
         ) : (
+          <Transactions month={month} />
+        )}
+        {!month && (
           <EmptyState
             onFile={onFile}
             onDemo={() => dispatch({ type: 'replace', data: createSampleData() })}
