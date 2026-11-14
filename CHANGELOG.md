@@ -9,3 +9,6 @@ and the project follows [Semantic Versioning](https://semver.org/).
 ### Added
 
 - Project setup: Vite, React, TypeScript, ESLint, Prettier, Vitest and CI.
+- Data model with integer-cent amounts, default categories and keyword rules.
+- Statistics: monthly summaries, cash flow, spending by category, running balance.
+- localStorage persistence, JSON backup parsing and deterministic demo data.
