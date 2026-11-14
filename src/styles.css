@@ -812,3 +812,69 @@ input {
 .link:hover {
   text-decoration: underline;
 }
+
+/* Settings */
+.settings {
+  display: grid;
+  gap: 16px;
+  max-width: 760px;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 12px 0 8px;
+}
+
+.field select,
+.rule-form input,
+.rule-form select {
+  height: 36px;
+  padding: 0 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-small);
+  background: var(--surface-raised);
+}
+
+.rule-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.rule-form input {
+  flex: 1 1 180px;
+}
+
+.rules {
+  max-height: 320px;
+  margin: 16px 0 0;
+  padding: 0;
+  overflow-y: auto;
+  list-style: none;
+  font-size: 0.9rem;
+}
+
+.rules li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  padding: 2px 0;
+  border-bottom: 1px solid var(--grid);
+}
+
+.rules__keyword {
+  font-family: ui-monospace, monospace;
+}
+
+.rules__arrow {
+  color: var(--muted);
+}
+
+.settings__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}

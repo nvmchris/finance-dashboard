@@ -19,6 +19,7 @@ and the project follows [Semantic Versioning](https://semver.org/).
 - Budgets: monthly limit per category with progress meters, on-track, close and over-budget states, and a summary card on the dashboard.
 - Demo mode via `?demo` that never touches saved data.
 - README with screenshots, CSV format guide and project structure.
+- Settings: display currency, editable keyword rules with "apply to uncategorised", JSON backup and restore, delete all data.
 
 ### Fixed
 
