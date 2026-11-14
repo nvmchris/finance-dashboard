@@ -11,16 +11,24 @@ import {
   summarise,
 } from '../lib/stats';
 import type { MonthKey } from '../lib/types';
+import { budgetProgress } from '../lib/budgets';
 import { useCategoryName, useStore } from '../state/store';
 import { BalanceChart } from './charts/BalanceChart';
 import { CashFlowChart } from './charts/CashFlowChart';
 import { CategoryBars } from './charts/CategoryBars';
+import { BudgetMeter } from './BudgetMeter';
 import { StatTile } from './StatTile';
 
 const TREND_MONTHS = 6;
+const TOP_BUDGETS = 4;
 
-export function Dashboard({ month }: { month: MonthKey }) {
-  const { transactions, settings } = useStore().data;
+interface DashboardProps {
+  month: MonthKey;
+  onShowBudgets: () => void;
+}
+
+export function Dashboard({ month, onShowBudgets }: DashboardProps) {
+  const { transactions, settings, budgets } = useStore().data;
   const categoryName = useCategoryName();
   const { currency } = settings;
 
@@ -33,6 +41,9 @@ export function Dashboard({ month }: { month: MonthKey }) {
   const balance = balanceSeries(transactions.filter((t) => monthOf(t.date) <= month)).filter(
     (point) => monthOf(point.date) >= trendMonths[0],
   );
+
+  const monthTransactions = inMonth(transactions, month);
+  const progress = budgetProgress(budgets, monthTransactions);
 
   return (
     <div className="dashboard">
@@ -81,13 +92,35 @@ export function Dashboard({ month }: { month: MonthKey }) {
         <h2>Spending by category</h2>
         <p className="card__subtitle">{formatMonth(month)}</p>
         <CategoryBars
-          totals={spendingByCategory(inMonth(transactions, month))}
+          totals={spendingByCategory(monthTransactions)}
           currency={currency}
           categoryName={categoryName}
         />
       </section>
 
-      <section className="card card--wide">
+      {progress.length > 0 && (
+        <section className="card">
+          <div className="card__head">
+            <h2>Budgets</h2>
+            <button type="button" className="link" onClick={onShowBudgets}>
+              Manage
+            </button>
+          </div>
+          <p className="card__subtitle">{formatMonth(month)}</p>
+          <div className="meters">
+            {progress.slice(0, TOP_BUDGETS).map((p) => (
+              <BudgetMeter
+                key={p.categoryId}
+                progress={p}
+                name={categoryName(p.categoryId)}
+                currency={currency}
+              />
+            ))}
+          </div>
+        </section>
+      )}
+
+      <section className={progress.length > 0 ? 'card' : 'card card--wide'}>
         <h2>Balance</h2>
         <p className="card__subtitle">Running total of all imported transactions</p>
         <BalanceChart points={balance} months={trendMonths} currency={currency} />

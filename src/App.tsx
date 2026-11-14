@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Budgets } from './components/Budgets';
 import { Dashboard } from './components/Dashboard';
 import { EmptyState } from './components/EmptyState';
 import { Header } from './components/Header';
@@ -14,11 +15,12 @@ import { listMonths } from './lib/stats';
 import type { AppData, MonthKey } from './lib/types';
 import { StoreProvider, useStore } from './state/store';
 
-type View = 'dashboard' | 'transactions';
+type View = 'dashboard' | 'transactions' | 'budgets';
 
 const VIEWS: ViewTab<View>[] = [
   { id: 'dashboard', label: 'Dashboard' },
   { id: 'transactions', label: 'Transactions' },
+  { id: 'budgets', label: 'Budgets' },
 ];
 
 function plural(count: number, noun: string): string {
@@ -69,11 +71,11 @@ function Shell() {
         {month && <ImportButton onFile={onFile} />}
       </Header>
       <main>
-        {!month ? null : view === 'dashboard' ? (
-          <Dashboard month={month} />
-        ) : (
-          <Transactions month={month} />
+        {month && view === 'dashboard' && (
+          <Dashboard month={month} onShowBudgets={() => setView('budgets')} />
         )}
+        {month && view === 'transactions' && <Transactions month={month} />}
+        {month && view === 'budgets' && <Budgets month={month} />}
         {!month && (
           <EmptyState
             onFile={onFile}
