@@ -13,3 +13,5 @@ and the project follows [Semantic Versioning](https://semver.org/).
 - Statistics: monthly summaries, cash flow, spending by category, running balance.
 - localStorage persistence, JSON backup parsing and deterministic demo data.
 - CSV import with delimiter, column, date and amount detection (German and English formats), duplicate skipping, keyword categorisation and CSV export.
+- App shell with month picker, CSV import button, light and dark theme and an empty state with demo data.
+- Dashboard: summary tiles with month-over-month change, cash-flow bars, ranked spending by category and a balance line, all dependency-free with hover tooltips.

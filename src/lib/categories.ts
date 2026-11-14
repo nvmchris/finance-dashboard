@@ -4,18 +4,18 @@ export const UNCATEGORISED_ID = 'uncategorised';
 export const INCOME_OTHER_ID = 'income-other';
 
 export const DEFAULT_CATEGORIES: Category[] = [
-  { id: 'salary', name: 'Salary', color: '#0f9d76', kind: 'income' },
-  { id: INCOME_OTHER_ID, name: 'Other income', color: '#4cc9a4', kind: 'income' },
-  { id: 'housing', name: 'Housing', color: '#5b6ef5', kind: 'expense' },
-  { id: 'groceries', name: 'Groceries', color: '#f59e0b', kind: 'expense' },
-  { id: 'dining', name: 'Dining out', color: '#ef4444', kind: 'expense' },
-  { id: 'transport', name: 'Transport', color: '#06b6d4', kind: 'expense' },
-  { id: 'utilities', name: 'Utilities', color: '#8b5cf6', kind: 'expense' },
-  { id: 'subscriptions', name: 'Subscriptions', color: '#ec4899', kind: 'expense' },
-  { id: 'shopping', name: 'Shopping', color: '#f97316', kind: 'expense' },
-  { id: 'health', name: 'Health', color: '#14b8a6', kind: 'expense' },
-  { id: 'leisure', name: 'Leisure', color: '#a3e635', kind: 'expense' },
-  { id: UNCATEGORISED_ID, name: 'Uncategorised', color: '#94a3b8', kind: 'expense' },
+  { id: 'salary', name: 'Salary', kind: 'income' },
+  { id: INCOME_OTHER_ID, name: 'Other income', kind: 'income' },
+  { id: 'housing', name: 'Housing', kind: 'expense' },
+  { id: 'groceries', name: 'Groceries', kind: 'expense' },
+  { id: 'dining', name: 'Dining out', kind: 'expense' },
+  { id: 'transport', name: 'Transport', kind: 'expense' },
+  { id: 'utilities', name: 'Utilities', kind: 'expense' },
+  { id: 'subscriptions', name: 'Subscriptions', kind: 'expense' },
+  { id: 'shopping', name: 'Shopping', kind: 'expense' },
+  { id: 'health', name: 'Health', kind: 'expense' },
+  { id: 'leisure', name: 'Leisure', kind: 'expense' },
+  { id: UNCATEGORISED_ID, name: 'Uncategorised', kind: 'expense' },
 ];
 
 const KEYWORDS: Record<string, string[]> = {
