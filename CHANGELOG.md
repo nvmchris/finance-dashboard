@@ -20,8 +20,10 @@ and the project follows [Semantic Versioning](https://semver.org/).
 - Demo mode via `?demo` that never touches saved data.
 - README with screenshots, CSV format guide and project structure.
 - Settings: display currency, editable keyword rules with "apply to uncategorised", JSON backup and restore, delete all data.
+- Recurring payments: detects monthly charges with a stable amount and shows their monthly and yearly cost.
 
 ### Fixed
 
 - Charts no longer overflow their card before the first resize measurement.
+- The header no longer overflows on narrow screens.
 - The screen-reader table caption is no longer visible in Firefox.

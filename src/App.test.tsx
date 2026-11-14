@@ -59,3 +59,10 @@ test('does not save anything when persistence is off', async () => {
   await userEvent.click(screen.getByRole('button', { name: 'Switch to dark theme' }));
   expect(localStorage.length).toBe(0);
 });
+
+test('lists recurring payments with their yearly cost', () => {
+  render(<App initial={createSampleData(TODAY)} persist={false} />);
+  const card = screen.getByRole('heading', { name: 'Recurring payments' }).closest('section');
+  expect(within(card as HTMLElement).getByText('Netflix')).toBeInTheDocument();
+  expect(within(card as HTMLElement).getByText('€167.88')).toBeInTheDocument();
+});

@@ -12,11 +12,13 @@ import {
 } from '../lib/stats';
 import type { MonthKey } from '../lib/types';
 import { budgetProgress } from '../lib/budgets';
+import { detectRecurring } from '../lib/recurring';
 import { useCategoryName, useStore } from '../state/store';
 import { BalanceChart } from './charts/BalanceChart';
 import { CashFlowChart } from './charts/CashFlowChart';
 import { CategoryBars } from './charts/CategoryBars';
 import { BudgetMeter } from './BudgetMeter';
+import { RecurringPayments } from './RecurringPayments';
 import { StatTile } from './StatTile';
 
 const TREND_MONTHS = 6;
@@ -44,6 +46,7 @@ export function Dashboard({ month, onShowBudgets }: DashboardProps) {
 
   const monthTransactions = inMonth(transactions, month);
   const progress = budgetProgress(budgets, monthTransactions);
+  const recurring = detectRecurring(transactions, month);
 
   return (
     <div className="dashboard">
@@ -125,6 +128,10 @@ export function Dashboard({ month, onShowBudgets }: DashboardProps) {
         <p className="card__subtitle">Running total of all imported transactions</p>
         <BalanceChart points={balance} months={trendMonths} currency={currency} />
       </section>
+
+      {recurring.length > 0 && (
+        <RecurringPayments payments={recurring} currency={currency} categoryName={categoryName} />
+      )}
     </div>
   );
 }

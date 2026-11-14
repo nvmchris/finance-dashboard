@@ -22,6 +22,8 @@ leaves your browser — there is no server, no account and no tracking.
 - **Dashboard** — income, expenses, net and savings rate with month-over-month change,
   six months of cash flow, ranked spending by category and a running balance.
 - **Budgets** — a monthly limit per category with on-track, close and over-budget states.
+- **Recurring payments** — rent, subscriptions and other monthly charges are detected
+  automatically, with what they cost you per year.
 - **Transactions** — search, filter, sort, edit, add manually and export back to CSV.
 - **Settings** — pick a currency, add your own category rules, back up and restore
   everything as a JSON file.
