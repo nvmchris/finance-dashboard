@@ -41,4 +41,40 @@ describe('reducer', () => {
     expect(reducer(base, { type: 'setTheme', theme: 'dark' }).settings.theme).toBe('dark');
     expect(reducer(base, { type: 'replace', data: emptyData() }).transactions).toEqual([]);
   });
+
+  it('sets the currency', () => {
+    expect(reducer(base, { type: 'setCurrency', currency: 'USD' }).settings.currency).toBe('USD');
+  });
+
+  it('adds rules in front, replaces duplicates and removes them', () => {
+    let data = reducer(base, {
+      type: 'addRule',
+      rule: { keyword: ' Bäckerei ', categoryId: 'dining' },
+    });
+    expect(data.rules[0]).toEqual({ keyword: 'Bäckerei', categoryId: 'dining' });
+
+    data = reducer(data, {
+      type: 'addRule',
+      rule: { keyword: 'bäckerei', categoryId: 'groceries' },
+    });
+    expect(data.rules.filter((r) => r.keyword.toLowerCase() === 'bäckerei')).toEqual([
+      { keyword: 'bäckerei', categoryId: 'groceries' },
+    ]);
+
+    data = reducer(data, { type: 'removeRule', keyword: 'BÄCKEREI' });
+    expect(data.rules).toEqual(base.rules);
+  });
+
+  it('applies rules only to uncategorised transactions', () => {
+    const data = {
+      ...base,
+      transactions: [
+        { ...tx('a', '2026-01-01'), description: 'Bäckerei Huber', categoryId: 'uncategorised' },
+        { ...tx('b', '2026-01-02'), description: 'Bäckerei Huber', categoryId: 'leisure' },
+      ],
+      rules: [{ keyword: 'bäckerei', categoryId: 'dining' }],
+    };
+    const next = reducer(data, { type: 'applyRules' });
+    expect(next.transactions.map((t) => t.categoryId)).toEqual(['dining', 'leisure']);
+  });
 });

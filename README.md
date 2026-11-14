@@ -23,6 +23,8 @@ leaves your browser — there is no server, no account and no tracking.
   six months of cash flow, ranked spending by category and a running balance.
 - **Budgets** — a monthly limit per category with on-track, close and over-budget states.
 - **Transactions** — search, filter, sort, edit, add manually and export back to CSV.
+- **Settings** — pick a currency, add your own category rules, back up and restore
+  everything as a JSON file.
 - **Light and dark theme**, keyboard accessible, charts readable with colour-vision
   deficiency and by screen readers.
 - **No chart library** — the charts are small SVG components; React is the only runtime

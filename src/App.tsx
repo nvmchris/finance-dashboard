@@ -6,6 +6,7 @@ import { Header } from './components/Header';
 import type { ViewTab } from './components/Header';
 import { ImportButton } from './components/ImportButton';
 import { MonthPicker } from './components/MonthPicker';
+import { Settings } from './components/Settings';
 import { Transactions } from './components/Transactions';
 import { useNotice } from './hooks/useNotice';
 import { useTheme } from './hooks/useTheme';
@@ -15,12 +16,13 @@ import { listMonths } from './lib/stats';
 import type { AppData, MonthKey } from './lib/types';
 import { StoreProvider, useStore } from './state/store';
 
-type View = 'dashboard' | 'transactions' | 'budgets';
+type View = 'dashboard' | 'transactions' | 'budgets' | 'settings';
 
 const VIEWS: ViewTab<View>[] = [
   { id: 'dashboard', label: 'Dashboard' },
   { id: 'transactions', label: 'Transactions' },
   { id: 'budgets', label: 'Budgets' },
+  { id: 'settings', label: 'Settings' },
 ];
 
 function plural(count: number, noun: string): string {
@@ -76,7 +78,8 @@ function Shell() {
         )}
         {month && view === 'transactions' && <Transactions month={month} />}
         {month && view === 'budgets' && <Budgets month={month} />}
-        {!month && (
+        {view === 'settings' && <Settings onNotice={setNotice} />}
+        {!month && view !== 'settings' && (
           <EmptyState
             onFile={onFile}
             onDemo={() => dispatch({ type: 'replace', data: createSampleData() })}
