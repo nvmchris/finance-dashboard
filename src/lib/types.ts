@@ -12,7 +12,6 @@ export type CategoryKind = 'income' | 'expense';
 export interface Category {
   id: string;
   name: string;
-  color: string;
   kind: CategoryKind;
 }
 
