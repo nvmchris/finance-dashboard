@@ -28,6 +28,9 @@ and the project follows [Semantic Versioning](https://semver.org/).
 
 ### Fixed
 
+- Opening Saldo from project-hub over Tailscale or DuckDNS no longer shows
+  "Blocked request" (Vite `allowedHosts`, override with `ALLOWED_HOSTS`).
+
 - Charts no longer overflow their card before the first resize measurement.
 - The header no longer overflows on narrow screens.
 - The screen-reader table caption is no longer visible in Firefox.
