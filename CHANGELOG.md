@@ -6,6 +6,10 @@ and the project follows [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Changed
+
+- Dark purple and turquoise theme shared with the other homelab tools; the light/dark toggle now renders the same palette (#18).
+
 ### Added
 
 - Project setup: Vite, React, TypeScript, ESLint, Prettier, Vitest and CI.

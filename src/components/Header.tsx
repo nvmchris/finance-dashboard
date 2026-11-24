@@ -32,7 +32,7 @@ export function Header<Id extends string>({
           <path
             d="M8 22l5-6 4 3 7-9"
             fill="none"
-            stroke="#fff"
+            stroke="var(--on-accent)"
             strokeWidth="3"
             strokeLinecap="round"
             strokeLinejoin="round"
